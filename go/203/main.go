@@ -3,8 +3,8 @@ package main
 import "fmt"
 
 type ListNode struct {
-	Val int
-	Next  *ListNode
+	Val  int
+	Next *ListNode
 }
 
 func print(head *ListNode) {
@@ -29,8 +29,21 @@ func create(nums []int) *ListNode {
 }
 
 func main() {
-	nums := []int{1, 2, 3, 4, 5}
-	list := create(nums)
+	result := removeElements(create([]int{1, 2, 6, 3, 4, 5, 6}), 6)
+	print(result)
+}
 
-	print(list)
+func removeElements(head *ListNode, val int) *ListNode {
+	dummy := &ListNode{Next: head}
+	curr := dummy
+
+	for curr.Next != nil {
+		if curr.Next.Val == val {
+			curr.Next = curr.Next.Next
+		} else {
+			curr = curr.Next
+		}
+	}
+
+	return dummy.Next
 }

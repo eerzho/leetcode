@@ -1,35 +1,25 @@
-from typing import List
+from typing import List, Dict
 from collections import defaultdict
 
 
 class Solution:
     def findDifference(self, nums1: List[int], nums2: List[int]) -> List[List[int]]:
-        hash_map1 = defaultdict(int)     
-        hash_map2 = defaultdict(int)
+        def find(hash_map: Dict, nums: List[int]) -> List[int]:
+            result = []
+            for num in nums:
+                if hash_map.get(num) == None:
+                    hash_map[num] = False
+                    result.append(num)
+            return result
+        
+        def create(nums: List[int]) -> Dict:
+            hash_map = {}
+            for num in nums:
+                hash_map[num] = True
+            return hash_map
 
-        for num in nums1:
-            hash_map1[num] += 1
+        return [find(create(nums2), nums1), find(create(nums1), nums2)]
 
-        for num in nums2:
-            hash_map2[num] += 1
-
-        result1 = []
-        for num in nums1:
-            if hash_map2[num] == 0:
-                if hash_map1[num] == 1:
-                    result1.append(num)
-                else:
-                    hash_map1[num] -= 1
-
-        result2 = []
-        for num in nums2:
-            if hash_map1[num] == 0:
-                if hash_map2[num] == 1:
-                    result2.append(num)
-                else:
-                    hash_map2[num] -= 1
-
-        return [result1, result2]
 
             
 solution = Solution()

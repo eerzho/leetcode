@@ -29,7 +29,7 @@ func create(nums []int) *ListNode {
 }
 
 func main() {
-	result := removeNthFromEnd(create([]int{1,2,3,4,5}), 2)
+	result := removeNthFromEnd(create([]int{1, 2, 3, 4, 5}), 2)
 	print(result)
 
 	result = removeNthFromEnd(create([]int{1}), 1)

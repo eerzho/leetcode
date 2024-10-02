@@ -1,9 +1,11 @@
 from typing import List, Optional
 
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+
 
 class Solution:
     def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
@@ -16,7 +18,7 @@ class Solution:
         curr = head
         while curr != None:
             curr = curr.next
-            list_len+=1
+            list_len += 1
 
         if list_len == 1:
             return head
@@ -42,6 +44,7 @@ class Solution:
 
         return new_head
 
+
 def create(nums: List[int]) -> ListNode:
     head = ListNode()
 
@@ -49,5 +52,5 @@ def create(nums: List[int]) -> ListNode:
     for num in nums:
         curr.next = ListNode(val=num)
         curr = curr.next
-    
+
     return head.next
